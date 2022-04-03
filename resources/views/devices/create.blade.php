@@ -59,8 +59,8 @@
                                                 <x-label for="user_placed" class="mb-2"
                                                     :value=" __('Name User Placed Device ') " />
                                                 <x-input type="text" class="w-full" name="user_placed"
-                                                    id="user_placed"
-                                                    value="{{ old('user_placed') }}" placeholder="Ahmad"/>
+                                                    id="user_placed" value="{{ old('user_placed') }}"
+                                                    placeholder="Ahmad" />
                                                 @error('user_placed')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -80,7 +80,7 @@
                                             <div class="mt-2">
                                                 <x-label for="ip" class="mb-2" :value=" __('IPV4') " />
                                                 <x-input name="ip" id="ip" class="w-full" type="text"
-                                                    placeholder="xxx.xxx.xxx.xxx" value="{{ old('ssid') }}" />
+                                                    placeholder="xxx.xxx.xxx.xxx" value="{{ old('ip') }}" />
                                                 @error('ip')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -106,21 +106,10 @@
                                                     <input :placeholder="show ?'*******':'Ba Kekok! 😜'"
                                                         :type="show ? 'password' : 'text'" name="password" id="password"
                                                         value="{{ old('password') }}"
-                                                        class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                        {{-- class="text-md block px-3 py-2 rounded-lg w-full
-                                                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
-                                                focus:placeholder-gray-500
-                                                focus:bg-white
-                                                focus:border-gray-600
-                                                focus:outline-none" --}} />
+                                                        class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                                                     <div
                                                         class="hover:cursor-pointer absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5">
-                                                        {{-- <svg
-                                                            xmlns="http://www.w3.org/2000/svg" viewbox="0 0 576 512">
-                                                            <path fill="currentColor"
-                                                                d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
-                                                            </path>
-                                                        </svg> --}}
+
                                                         <svg class="h-5 w-5" fill="currentColor"
                                                             @click="show = !show"
                                                             :class="{'hidden': !show, 'block':show }"
@@ -130,6 +119,7 @@
                                                                 d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
                                                                 clip-rule="evenodd" />
                                                         </svg>
+
                                                         <svg class="h-5 w-5" viewBox="0 0 20 20"
                                                             fill="currentColor" @click="show = !show"
                                                             :class="{'block': !show, 'hidden':show }"

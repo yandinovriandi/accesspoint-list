@@ -42,14 +42,8 @@
                                         <div class="grid grid-col md:grid-cols-2 gap-x-2">
                                             <div class="mt-2">
                                                 <x-label class="mb-2" :value=" __('Area') " />
-                                                <select id="area"
-                                                    class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                    type="text" name="area">
-                                                    <option disabled selected>Choose an Area</option>
-                                                    @foreach ($areas as $area)
-                                                        <option value="{{ $area->name }}">{{ $area->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <x-input class="w-full" id="area" type="text" name="area"
+                                                    :value="old('area') ?? $device->area" />
                                                 @error('area')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -58,14 +52,8 @@
                                             <div class="mt-2">
                                                 <x-label for="user_placed" class="mb-2"
                                                     :value=" __('Name User Placed Device ') " />
-                                                <select id="user_placed"
-                                                    class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                    type="text" name="user_placed">
-                                                    <option disabled selected>Choose an User For Place Area</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->name }}">{{ $user->name }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <x-input class="w-full" id="user_placed" type="text" name="user_placed"
+                                                    :value="old('user_placed') ?? $device->user_placed" />
                                                 @error('user_placed')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -76,7 +64,8 @@
                                             <div class="mt-2">
                                                 <x-label for="ssid" class="mb-2" :value=" __('SSID') " />
                                                 <x-input class="w-full" type="text" name="ssid" id="ssid"
-                                                    placeholder="Wifi Hotspot"  value="{{ $device->ssid ?? old('ssid')}} "/>
+                                                    placeholder="Wifi Hotspot"
+                                                    value="{{ $device->ssid ?? old('ssid') }} " />
                                                 @error('ssid')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -86,7 +75,7 @@
                                                 <x-label for="ip" class="mb-2" :value=" __('IPV4') " />
                                                 <x-input name="ip" id="ip" class="w-full" type="text"
                                                     placeholder="xxx.xxx.xxx.xxx"
-                                                    value="{{ $device->ip ?? old('ip')}} " />
+                                                    value="{{ $device->ip ?? old('ip') }} " />
                                                 @error('ip')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -98,7 +87,8 @@
                                                 <x-label for="username" class="mb-2"
                                                     :value=" __('Usename') " />
                                                 <x-input class="w-full" name="username" id="username"
-                                                    type="text" placeholder="Username" value="{{ $device->username ?? old('username')}} "/>
+                                                    type="text" placeholder="Username"
+                                                    value="{{ $device->username ?? old('username') }} " />
                                                 @error('username')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -109,7 +99,8 @@
                                                     :value=" __('Password') " />
                                                 <div class="relative">
                                                     <input :placeholder="show ?'*******':'Ba Kekok! 😜'"
-                                                        :type="show ? 'password' : 'text'" name="password" id="password" value="{{ $device->password ?? old('password')}} "
+                                                        :type="show ? 'password' : 'text'" name="password" id="password"
+                                                        value="{{ $device->password ?? old('password') }} "
                                                         class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                                                         {{-- class="text-md block px-3 py-2 rounded-lg w-full
                                                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
@@ -157,7 +148,8 @@
                                             <div class="mt-2">
                                                 <x-label for="brand" class="mb-2" :value=" __('Brand') " />
                                                 <x-input name="brand" id="brand" class="w-full" type="text"
-                                                    placeholder="Huawei" value="{{ $device->brand ?? old('brand')}} " />
+                                                    placeholder="Huawei"
+                                                    value="{{ $device->brand ?? old('brand') }} " />
                                                 @error('brand')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -166,7 +158,8 @@
                                             <div class="mt-2">
                                                 <x-label for="type" class="mb-2" :value=" __('Type') " />
                                                 <x-input class="w-full" type="text" name="type" id="type"
-                                                    placeholder="HG8245H5" value="{{ $device->type ?? old('type')}} "/>
+                                                    placeholder="HG8245H5"
+                                                    value="{{ $device->type ?? old('type') }} " />
                                                 @error('type')
                                                     <div class="mt-3 text-red-500 text-xs font-extralight">
                                                         {{ $message }}</div>
@@ -177,14 +170,15 @@
                                             <x-label for="description" class="mb-2"
                                                 :value=" __('Descriptions') " />
                                             <textarea class="w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                type="text" name="description" id="description">{{ $device->description ?? old('description')}}</textarea>
+                                                type="text" name="description"
+                                                id="description">{{ old('description') ?? $device->description }}</textarea>
                                             @error('description')
                                                 <div class="mt-3 text-red-500 text-xs font-extralight">
                                                     {{ $message }}</div>
                                             @enderror
                                         </div>
                                         <div class="flex items-center md:justify-start gap-x-3">
-                                            <x-button>Create</x-button>
+                                            <x-button>Update</x-button>
                                             <a href="{{ route('devices.table') }}"
                                                 class="text-md font-medium capitalize px-3 py-1.5 text-center bg-amber-500 rounded-lg text-white">Cancle</a>
                                         </div>

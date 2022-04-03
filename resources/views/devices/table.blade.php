@@ -138,65 +138,6 @@
                                                                     clip-rule="evenodd" />
                                                             </svg>
                                                         </a>
-                                                        {{-- <x-form-modal state="open" x-show="open"
-                                                            title="Update Assign Permissions to user">
-                                                            <form action="{{ route('assign.update', $role) }}"
-                                                                method="post">
-                                                                @csrf
-                                                                <div>
-                                                                    <x-label for="role" :value="__('Role Name')" />
-
-                                                                    <select id="role"
-                                                                        class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                                                        type="text" name="role">
-                                                                        <option disabled selected>Choose a Role</option>
-                                                                        @foreach ($roles as $item)
-                                                                            <option
-                                                                                {{ $role->id == $item->id ? 'selected' : '' }}
-                                                                                value="{{ $item->id }}">
-                                                                                {{ $item->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    @error('role')
-                                                                        <div
-                                                                            class="mt-3 text-red-500 text-xs font-extralight">
-                                                                            {{ $message }}</div>
-                                                                    @enderror
-                                                                </div>
-                                                                <div class="mt-4">
-                                                                    <x-label class="mb-3" for="permissions"
-                                                                        :value="__('Permissions Name')" />
-
-                                                                    <select id="permissions" multiple
-                                                                        class="w-full select2-multiple mb-4" type="text"
-                                                                        name="permissions[]">
-                                                                        @foreach ($permissions as $permission)
-                                                                            <option
-                                                                                {{ $role->permissions()->find($permission->id) ? 'selected' : '' }}
-                                                                                value="{{ $permission->id }}">
-                                                                                {{ $permission->name }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                    @error('permissions')
-                                                                        <div
-                                                                            class="mt-3 text-red-500 text-xs font-extralight">
-                                                                            {{ $message }}</div>
-                                                                    @enderror
-                                                                </div>
-
-                                                                <div
-                                                                    class="mt-4 flex items-center justify-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                                                                    <button
-                                                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                                                        Assign
-                                                                    </button>
-                                                                    <button @click="open=false" type="button"
-                                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                                                        Cancle
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </x-form-modal> --}}
                                                     </td>
                                                 </tr>
                                             @endforeach

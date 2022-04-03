@@ -10,7 +10,8 @@ class AddUserController extends Controller
 {
     public function table()
     {
-        return view('users.table');
+        $users = User::paginate(6);
+        return view('users.table', compact('users'));
     }
 
     /**

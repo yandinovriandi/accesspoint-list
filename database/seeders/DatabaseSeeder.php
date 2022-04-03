@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UsersTableSeeder::class, RolesTableSeeder::class, NavigationsTableSeeder::class, PermissionsTableSeeder::class
+            UsersTableSeeder::class, RolesTableSeeder::class,
+            NavigationsTableSeeder::class, PermissionsTableSeeder::class, AreasTableSeeder::class
         ]);
         // \App\Models\Navigation::factory()->create();
         // \App\Models\Area::factory(10)->create();
