@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
             ->prefix('users')->name('users.')->group(function () {
                 Route::get('', 'table')->name('table');
                 Route::get('create', 'create')->name('create');
+                Route::post('create', 'store');
             });
 
         Route::controller(DeviceController::class)->middleware('permission:create devices')

@@ -8,9 +8,9 @@
                 <header>
                     <div x-data="{ open: false }" class="flex items-center justify-between py-4 px-2 w-full border-b-2">
                         <p class="text-xl font-semibold tracking-tighter">
-                            Permissions
+                            Users
                         </p>
-                        <button @click="open=true"
+                        <a href="{{ route('users.create') }}"
                             class="block text-blue-600 bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-3 text-center hover:text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -18,7 +18,7 @@
                                 <path
                                     d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
                             </svg>
-                        </button>
+                        </a>
                         <x-form-modal state="open" x-show="open" title="Create new Permission">
                             <form action="{{ route('permissions.create') }}" method="post">
                                 @csrf
