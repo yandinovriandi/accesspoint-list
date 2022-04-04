@@ -6,11 +6,11 @@
         <div class="bg-gray-100 min-h-screen w-full sm:w-4/5">
             <div class="px-4">
                 <header>
-                    <div x-data="{open:false}" class="flex items-center justify-between py-4 px-2 w-full border-b-2">
+                    <div class="flex items-center justify-between py-4 px-2 w-full border-b-2">
                         <p class="text-xl font-semibold tracking-tighter">
-                            Permissions
+                            Coverage Area
                         </p>
-                        <button @click="open=true"
+                        <a href="{{ route('areas.create') }}"
                             class="block text-blue-600 bg-blue-100 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-3 py-3 text-center hover:text-white dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             type="button">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
@@ -18,42 +18,7 @@
                                 <path
                                     d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z" />
                             </svg>
-                        </button>
-                        <x-form-modal state="open" x-show="open" title="Create new Permission">
-                            <form action="{{ route('permissions.create') }}" method="post">
-                                @csrf
-                                <div>
-                                    <x-label for="name" :value="__('Name')" />
-
-                                    <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                        :value="old('name')" />
-                                    @error('name')
-                                        <div class="mt-3 text-red-500 text-xs font-extralight">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="mt-4">
-                                    <x-label for="guard_name" :value="__('Guard Name')" />
-
-                                    <x-input id="guard_name" class="block mt-1 w-full" type="text" name="guard_name"
-                                        :value="old('guard_name')" />
-                                    @error('guard_name')
-                                        <div class="mt-3 text-red-500 text-xs font-extralight">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div
-                                    class="flex items-center justify-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                                    <button
-                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                        Create
-                                    </button>
-                                    <button @click="open=false" type="button"
-                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">
-                                        Cancle
-                                    </button>
-                                </div>
-                            </form>
-                        </x-form-modal>
+                        </a>
                     </div>
                 </header>
                 <div class="mt-4">
@@ -62,10 +27,10 @@
                             <div
                                 class="grid items-center gap-4 rounded-t-xl border-b bg-gray-50/40 px-4 py-3 sm:grid-cols-12">
                                 <div class="col-span-12 sm:col-span-8">
-                                    <div class="block font-medium tracking-tighter lg:text-lg">All Permissions App
+                                    <div class="block font-medium tracking-tighter lg:text-lg">All Coverage Name
                                     </div>
                                     <span class="block text-xs tracking-tighter text-gray-500 lg:text-sm">
-                                        You Can Changes All Permissions For All or Any Users.
+                                        You Can Create All Area Was Coverage.
                                     </span>
                                 </div>
                             </div>
@@ -77,10 +42,10 @@
                                                 <th class=" whitespace-nowrap px-5 py-4 text-sm font-medium">#
                                                 </th>
                                                 <th class=" whitespace-nowrap px-5 py-4 text-sm font-medium">
-                                                    Roles Name
+                                                    Coverage Name
                                                 </th>
                                                 <th class=" whitespace-nowrap px-5 py-4 text-sm font-medium">
-                                                    Guard Name
+                                                    Description
                                                 </th>
                                                 <th class=" whitespace-nowrap px-5 py-4 text-sm font-medium">
                                                     Created At
@@ -89,7 +54,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($areas as $i => $permission)
+                                            @foreach ($areas as $i => $area)
                                                 <tr class=" border-b last:border-b-0 hover:bg-blue-50/30">
                                                     <td class=" whitespace-nowrap px-5 py-4 text-sm">
                                                         {{ $i + $areas->firstItem() }}
@@ -98,18 +63,18 @@
                                                         <a class="font-light"
                                                             href="/articles/unpacking-array-php-8-php-81-vez7i4">
                                                             <span
-                                                                class="px-2 py-0.5 text-cyan-500 bg-cyan-100 rounded-lg hover:text-cyan-700">{{ $permission->name }}</span>
+                                                                class="px-2 py-0.5 text-cyan-500 bg-cyan-100 rounded-lg hover:text-cyan-700">{{ $area->name }}</span>
                                                         </a>
                                                     </td>
                                                     <td class=" whitespace-nowrap px-5 py-4 text-sm">
-                                                        {{ $area->guard_name }}
+                                                        {{ $area->keterangan }}
                                                     </td>
                                                     <td class=" whitespace-nowrap px-5 py-4 text-sm">
                                                         {{ $area->created_at->format('d F, Y ') }}
                                                     </td>
                                                     <td class=" whitespace-nowrap px-5 py-4 text-sm">
                                                         <span class="flex items-center justify-center gap-x-2">
-                                                            <span x-data="{open:false}">
+                                                            <span x-data="{ open: false }">
                                                                 <button @click="open=true"
                                                                     class="block text-red-600 bg-red-100 hover:bg-red-800
                                                     focus:ring-4 focus:outline-none focus:ring-red-300
@@ -128,7 +93,7 @@
                                                                 <x-form-modal state="open" x-show="open"
                                                                     title="Delete Permission">
                                                                     <form
-                                                                        action="{{ route('permissions.delete', $permission) }}"
+                                                                        action="{{ route('permissions.delete', $area) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         @method('delete')
@@ -140,7 +105,7 @@
                                                                             you can delete
                                                                             <br>
                                                                             <span
-                                                                                class="text-red-500 text-lg font-semibold">{{ $permission->name }}</span>
+                                                                                class="text-red-500 text-lg font-semibold">{{ $area->name }}</span>
 
                                                                             <br> Now . . . !
                                                                         </p>
@@ -161,7 +126,7 @@
                                                                     </form>
                                                                 </x-form-modal>
                                                             </span>
-                                                            <span x-data="{open:false}">
+                                                            <span x-data="{ open: false }">
                                                                 <button @click="open=true"
                                                                     class="block text-amber-600 bg-amber-100 hover:bg-amber-800
                                                     focus:ring-4 focus:outline-none focus:ring-amber-300
@@ -179,7 +144,7 @@
                                                                 <x-form-modal state="open" x-show="open"
                                                                     title="Edit Permission">
                                                                     <form
-                                                                        action="{{ route('permissions.update', $permission) }}"
+                                                                        action="{{ route('permissions.update', $area) }}"
                                                                         method="post">
                                                                         @csrf
                                                                         @method('put')
@@ -187,7 +152,7 @@
                                                                             <x-label for="name" :value="__('Name')" />
                                                                             <x-input id="name" class="block mt-1 w-full"
                                                                                 type="text" name="name"
-                                                                                :value="old('name') ?? $permission->name" />
+                                                                                :value="old('name') ?? $area->name" />
                                                                         </div>
                                                                         <div class="mt-4">
                                                                             <x-label for="guard_name"
@@ -195,8 +160,8 @@
 
                                                                             <x-input id="guard_name"
                                                                                 class="block mt-1 w-full" type="text"
-                                                                                name="guard_name"
-                                                                                :value="old('guard_name') ?? $permission->guard_name" />
+                                                                                name="guard_name" :value="old('guard_name') ??
+                                                                                    $area->guard_name" />
                                                                         </div>
 
                                                                         <div

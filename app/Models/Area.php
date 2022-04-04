@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Area extends Model
 {
+    protected $fillable = ['name', 'keterangan'];
     use HasFactory;
-    public function devices(){
+    public function devices()
+    {
         return $this->hasMany(Device::class);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Models\Area;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AreaController extends Controller
 {
@@ -26,18 +27,23 @@ class AreaController extends Controller
      */
     public function create()
     {
-        //
+        return view('area.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $request = Area::create([
+            'name' => request('name'),
+            'keterangan' => request('keterangan')
+        ]);
+        Alert::success('success', 'Create New Area');
+        return redirect(route('areas.table'));
     }
 
     /**
