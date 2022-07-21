@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
     {
         $user = new User;
         $user->name = "Super Admin";
-        $user->email = "su@email.com";
+        $user->email = "yandi@mikrotikbot.com";
         $user->password =  Hash::make('password');
         $user->save();
     }

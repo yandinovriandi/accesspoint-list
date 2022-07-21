@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Back\{AreaController, DashboardController, DeviceController, NavigationController};
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\MikrotikController;
 use App\Http\Controllers\Permissions\{AssignController, PermissionController, RoleController, UserController};
 use App\Http\Controllers\User\AddUserController;
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 Route::get('/', HomeController::class)->name('home');
 
@@ -13,6 +15,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
     Route::middleware('has.role')->prefix('settings')->group(function () {
+        Route::prefix('mikrotik')->group(function () {
+            Route::controller(MikrotikController::class)->middleware('permission:create mikrotik')->prefix('hotspot')->name('hotspot.')->group(function () {
+                Route::get('', 'table')->name('table');
+            });
+        });
 
         Route::prefix('role-and-permission')->group(function () {
 
@@ -61,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
                 Route::put('{device}/edit', 'update');
             });
 
-            Route::controller(AreaController::class)->middleware('permission:create areas')
+        Route::controller(AreaController::class)->middleware('permission:create areas')
             ->prefix('coverage')->name('areas.')->group(function () {
                 Route::get('', 'table')->name('table');
                 Route::get('create', 'create')->name('create');

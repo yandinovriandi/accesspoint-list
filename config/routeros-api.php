@@ -14,10 +14,10 @@ return [
      |
      */
 
-    'host' => '192.168.88.1', // Address of Mikrotik RouterOS
-    'user' => 'admin',        // Username
-    'pass' => null,           // Password
-    'port' => 8728,           // RouterOS API port number for access (if not set use default or default with SSL if SSL enabled)
+    'host' => env('MIKROTIK_HOST','192.168.88.1'), // Address of Mikrotik RouterOS
+    'user' => env('MIKROTIK_USER','admin'),        // Username
+    'pass' => env('MIKROTIK_PASS',null),           // Password
+    'port' => (int) env('MIKROTIK_PORT',8728),           // RouterOS API port number for access (if not set use default or default with SSL if SSL enabled)
 
     /*
      |--------------------------------------------------------------------------
